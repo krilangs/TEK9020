@@ -3,6 +3,7 @@
 \hypersetup{colorlinks=true}
 \usepackage{titling}
 \usepackage{graphicx}
+\graphicspath{{figures/}}
 
 %\setlength{\droptitle}{-1cm} 
 
@@ -16,7 +17,7 @@
 \maketitle
 
 \section{Introduksjon}
-I denne oppgaven er tanken å illustrere hva som skjer i mønstergjenkjenning. Ved å bruke tre forskjellige klassifikatorer; Minimum feilrate med normalfordelings antagelse, Minste kvadraters metode og Nærmeste-nabo, skal jeg forsøke å finne ut hvilken av disse tre mønstergjenkjenningsklassifikatorene som er den beste klassifikatoren av tre ulike datasett med forskjellige objekter og egenskaper. Klassifikatorene blir vurdert ved å estimere feilrater med et to-klasse problem. Klassifikatorene trenes opp med et trenings sett og blir evaluert med et test sett for å finne den beste klassifikatoren. Dette gjøres med programmeringsverktøyet Python. Til slutt diskuteres resultatene, og det svares på noen relevante spørsmål angående resultatene som er funnet og om klassifikatorene som er brukt.
+I denne oppgaven er tanken å illustrere hva som skjer i mønstergjenkjenning. Ved å bruke tre forskjellige klassifikatorer; Minimum feilrate med normalfordelings antagelse, Minste kvadraters metode og Nærmeste-nabo, skal jeg forsøke å finne ut hvilken av disse tre mønstergjenkjenningsklassifikatorene som er den beste klassifikatoren av tre ulike datasett med forskjellige objekter og egenskaper. Klassifikatorene blir vurdert ved å estimere feilrater med et to-klasse problem. Klassifikatorene trenes opp med et trenings sett og blir evaluert med et test sett for å finne den beste klassifikatoren. Dette gjøres med programmeringsverktøyet Python (\ref{Appendix:Kode}). Til slutt diskuteres resultatene, og det svares på noen relevante spørsmål angående resultatene som er funnet og om klassifikatorene som er brukt.
 
 
 \section{Metode}
@@ -206,6 +207,7 @@ På datasett 1 gav den lineære klassifikatoren minste kvadraters metode den lav
 
 \appendix
 \section{Python kode}
+\label{Appendix:Kode}
 Koden som er brukt i dette prosjektet kan bli funnet i GitHub på: \url{https://github.com/krilangs/TEK9020/tree/main/Project1}
 
 \end{document}
