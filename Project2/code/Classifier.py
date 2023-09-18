@@ -5,13 +5,13 @@ def g_q(x, W, w, w0):
     """
     Quadratic discriminant function.
     """
-    return x@W@x.T + w.T@x.T + w0
+    return x @ W @ x.T + w.T @ x.T + w0
 
 def MinErrorRate(train1, train2, train3, test_data):
     """
-    Use the minimum error rate classifier, assuming a normal distribution, to
-    do a segmentation task on some given test image containing classes as
-    trained on for some given training data.
+    Given some training data containing class information, use the 
+    minimum error rate classifier, assuming a normal distribution, to do a 
+    segmentation task on a given test image.
     """
     # Number of features
     feat = train1.shape[2]
@@ -57,18 +57,19 @@ def MinErrorRate(train1, train2, train3, test_data):
     W3 = -0.5*np.linalg.pinv(cov3)
 
     # dx1 vectors
-    w1 = np.linalg.pinv(cov1)@mu1.T
-    w2 = np.linalg.pinv(cov2)@mu2.T
-    w3 = np.linalg.pinv(cov3)@mu3.T
+    w1 = np.linalg.pinv(cov1) @ mu1.T
+    w2 = np.linalg.pinv(cov2) @ mu2.T
+    w3 = np.linalg.pinv(cov3) @ mu3.T
 
     # 1x1 scalars
     w01 = -0.5*mu1 @ np.linalg.pinv(cov1) @ mu1.T\
-        -0.5*np.log(np.linalg.det(cov1)) + np.log(P_omega1)
+        - 0.5*np.log(np.linalg.det(cov1)) + np.log(P_omega1)
     w02 = -0.5*mu2 @ np.linalg.pinv(cov2) @ mu2.T\
-        -0.5*np.log(np.linalg.det(cov2)) + np.log(P_omega2)
+        - 0.5*np.log(np.linalg.det(cov2)) + np.log(P_omega2)
     w03 = -0.5*mu3 @ np.linalg.pinv(cov3) @ mu3.T\
-        -0.5*np.log(np.linalg.det(cov3)) + np.log(P_omega3)
+        - 0.5*np.log(np.linalg.det(cov3)) + np.log(P_omega3)
 
+    # 3 class segmentation
     segmentation = np.zeros((test_data.shape[0], test_data.shape[1], 3))
     # Set class colors for segmentation
     classes = [[0.85, 0.1, 0.87], [0.9, 0.8, 0.3], [0.07, 0.6, 0.5]]
@@ -77,8 +78,7 @@ def MinErrorRate(train1, train2, train3, test_data):
             g1 = g_q(test_data[i, j], W1, w1, w01)
             g2 = g_q(test_data[i, j], W2, w2, w02)
             g3 = g_q(test_data[i, j], W3, w3, w03)
-            g_arr = np.array([g1, g2, g3])
-            idx = np.argmax(g_arr)
+            idx = np.argmax(np.array([g1, g2, g3]))
             segmentation[i, j] = classes[idx]
 
     return segmentation

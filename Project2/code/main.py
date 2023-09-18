@@ -11,6 +11,7 @@ def Plot_train_Seg(train, test, xs1, ys1, w1, h1, xs2, ys2, w2, h2,
                    xs3, ys3, w3, h3, t1="", t2="", norm=False):
     ### Plot image with training boxes
     plt.imshow(train)  # Plot image
+
     ax = plt.gca()
     # Make training patches ((x_start,y_start), width, height)
     rect1 = Rectangle((xs1, ys1), w1, h1, linewidth=1, edgecolor="b",
@@ -19,6 +20,7 @@ def Plot_train_Seg(train, test, xs1, ys1, w1, h1, xs2, ys2, w2, h2,
                               facecolor="none")
     rect3 = Rectangle((xs3, ys3), w3, h3, linewidth=1, edgecolor="b",
                               facecolor="none")
+
     ax.add_patch(rect1)
     ax.add_patch(rect2)
     ax.add_patch(rect3)
@@ -77,15 +79,14 @@ if __name__=="__main__":
                xs3, ys3, w3, h3, t1, t2, norm)
 
     # 2)
-    ### Train and test with two separate images
+    ### Use two separate images for training and testing
     train = np.array(Image.open(folder+"Bilde2.png", mode="r").convert("RGB"))
     test = np.array(Image.open(folder+"Bilde3.png", mode="r").convert("RGB"))
 
     ## Plot original image with training boxes and following segmentation
     xs1 = 740;  ys1 = 1000; w1 = 600;  h1 = 500
     xs2 = 2150; ys2 = 550;  w2 = 600;  h2 = 600
-    #xs3 = 1300; ys3 = 1800; w3 = 1000; h3 = 600
-    xs3 = 10; ys3 = 10; w3 = 1000; h3 = 600
+    xs3 = 10;   ys3 = 10;   w3 = 1000; h3 = 600
     t1 = "Treningsregioner"
     t2 = "Bilde segmentert uten normalisering"
     norm = False
