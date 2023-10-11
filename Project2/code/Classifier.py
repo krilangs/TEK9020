@@ -7,6 +7,7 @@ def g_q(x, W, w, w0):
     """
     return x @ W @ x.T + w.T @ x.T + w0
 
+
 def MinErrorRate(train1, train2, train3, test_data):
     """
     Given some training data containing class information, use the 

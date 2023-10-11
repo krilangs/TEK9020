@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle
 from PIL import Image
 from Classifier import MinErrorRate
+from matplotlib.patches import Rectangle
 
 folder = "data/"
 
