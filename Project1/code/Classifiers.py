@@ -13,7 +13,7 @@ def g_q(x, W, w, w0):
     """
     Quadratic discriminant function.
     """
-    return x@W@x.T + w.T@x.T + w0
+    return x @ W @ x.T + w.T @ x.T + w0
 
 #----------------------------------------------------
 def MinErrorRate(train_data, test_data, feature_idx):
@@ -49,8 +49,8 @@ def MinErrorRate(train_data, test_data, feature_idx):
     mu2 = 1/n2*np.sum(train2, axis=0)
 
     # Maximum likelihood estimation covariance matrix for the classes
-    cov1 = 1/n1*(train1 - mu1).T@(train1 - mu1)
-    cov2 = 1/n2*(train2 - mu2).T@(train2 - mu2)
+    cov1 = 1/n1*(train1 - mu1).T @ (train1 - mu1)
+    cov2 = 1/n2*(train2 - mu2).T @ (train2 - mu2)
 
     # Components in the two class discriminant function
     # dxd matrices

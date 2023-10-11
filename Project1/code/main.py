@@ -13,7 +13,7 @@ def plot_3d_ds2():
     filename = "data/ds-2.txt"
     data = pd.read_csv(filename, header=None, sep="\s+", engine="python")
     data = data.to_numpy()
-    
+
     fig = plt.figure()
     ax =  fig.add_subplot(projection="3d")
     class1 = data[data[:, 0] == 1]
@@ -44,21 +44,21 @@ def best_combination(err_rate, idxs):
     """
     best_idx = np.argmin(err_rate)
     best_comb_idx = idxs[best_idx]
-    
+
     return err_rate[best_idx], best_comb_idx
 
 
 if __name__=="__main__":
     """
-    1) Compute the error rate using the Nearest Neighbour classifier to find 
-    the best combination of features for each dimension of features, 
+    1) Compute the error rate using the Nearest Neighbour classifier to find
+    the best combination of features for each dimension of features,
     per data set.
     2) For the best feature combinations in each feature dimension, find the
-    best classifier between the Nearest Neighbour, Least Squares and 
+    best classifier between the Nearest Neighbour, Least Squares and
     Minimum Error Rate classifiers, per data set.
     """
     #plot_3d_ds2()
-    
+
     # 1)
     folder = "data/"
     #filename = folder+"ds-1.txt"
@@ -66,11 +66,11 @@ if __name__=="__main__":
     filename = folder+"ds-3.txt"
     data = pd.read_csv(filename, header=None, sep="\s+", engine="python")
     train, test = train_test_split(data)
-    
+
     if train.shape[1] == 5:
         err_rate_d1, err_rate_d2, err_rate_d3, err_rate_d4, \
         idx_d1, idx_d2, idx_d3, idx_d4 = NearestNeighbour(train, test)
-        
+
         error_rate = [err_rate_d1, err_rate_d2, err_rate_d3, err_rate_d4]
         index = [idx_d1, idx_d2, idx_d3, idx_d4]
     else:
@@ -79,7 +79,7 @@ if __name__=="__main__":
 
         error_rate = [err_rate_d1, err_rate_d2, err_rate_d3]
         index = [idx_d1, idx_d2, idx_d3]
-        
+
     print("Dim 1:", err_rate_d1)
     print("Dim 2:", err_rate_d2)
     print("Dim 3:", err_rate_d3)
