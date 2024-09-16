@@ -25,11 +25,12 @@ matplotlib.rcParams['font.size'] = 14
 
 # Log print output to file
 logger = logging.getLogger(__name__)
+logging.basicConfig(filename="ClusterResults.log", encoding="utf-8",
+                    filemode="w", format="%(message)s", level=logging.INFO)
 save_folder = "figures/"
 if not os.path.exists(save_folder):
     os.makedirs(save_folder)
-logging.basicConfig(filename="ClusterClass.log", encoding="utf-8",
-                    filemode="a", format="%(message)s")
+
 
 
 # Functions
@@ -252,7 +253,9 @@ if __name__=="__main__":
                                        2: "Iris-virginica"})
 
     logger.info("Evaluate classifiers on KMeans cluster:")
-    Classifiers(iris_X, pred_kmeans, pred_kmeans, save=subFolder + "KMeans")
+    #Classifiers(iris_X, pred_kmeans, pred_kmeans, save=subFolder + "KMeans")
+    Classifiers(iris_X, pred_kmeans, iris_Y, save=subFolder + "KMeans")
+
     logger.info("-----------------------------------------")
 
 
@@ -275,5 +278,6 @@ if __name__=="__main__":
                                      2: "Iris-virginica"})
 
     logger.info("Evaluate classifiers on Agglo cluster:")
-    Classifiers(iris_X, pred_agglo, pred_agglo, save=subFolder + "Agglo")
+    #Classifiers(iris_X, pred_agglo, pred_agglo, save=subFolder + "Agglo")
+    Classifiers(iris_X, pred_agglo, iris_Y, save=subFolder + "Agglo")
 
